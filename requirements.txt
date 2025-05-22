@@ -6,3 +6,5 @@ torch
 plotly
 openai
 matplotlib
+seaborn
+scikit-learn
