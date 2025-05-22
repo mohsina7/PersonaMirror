@@ -1,47 +1,6 @@
-import pandas as pd
-import csv
-from datetime import datetime
-
-# Sample journal entries for demo
-data = {
-    "Timestamp": [
-        datetime(2025, 5, 20, 9, 15),
-        datetime(2025, 5, 21, 14, 45),
-        datetime(2025, 5, 22, 8, 0),
-        datetime(2025, 5, 23, 19, 30),
-        datetime(2025, 5, 24, 12, 10),
-    ],
-    "Entry": [
-        "Today I felt very productive and happy with the progress on my project.",
-        "Feeling anxious about the upcoming presentation. Need to prepare more.",
-        "Neutral day overall. Just went through the motions without much emotion.",
-        "Had a fight with a friend. Feeling upset and angry.",
-        "Went for a walk and cleared my mind. Feeling calm and relaxed now.",
-    ],
-    "Mood": [
-        "Positive",
-        "Negative",
-        "Neutral",
-        "Negative",
-        "Positive",
-    ],
-    "Emotion": [
-        "joy",
-        "anxiety",
-        "neutral",
-        "anger",
-        "calm",
-    ],
-    "Reflection": [
-        "You're on a great track — try to continue these habits!",
-        "Tough days happen — consider writing what made today hard.",
-        "Neutral days are perfect for setting intentions.",
-        "Try to find one small good thing from today, even if it was difficult.",
-        "Your positive mindset is your strength. Keep it going!",
-    ],
-}
-
-df = pd.DataFrame(data)
-csv_path = "/mnt/data/journal_entries.csv"
-df.to_csv(csv_path, index=False, quoting=csv.QUOTE_ALL)
-csv_path
+Timestamp,Entry,Mood,Emotion,Reflection
+2025-05-20 09:15:00,"Today I felt very productive and happy with the progress on my project.",Positive,joy,"You're on a great track — try to continue these habits!"
+2025-05-21 14:45:00,"Feeling anxious about the upcoming presentation. Need to prepare more.",Negative,anxiety,"Tough days happen — consider writing what made today hard."
+2025-05-22 08:00:00,"Neutral day overall. Just went through the motions without much emotion.",Neutral,neutral,"Neutral days are perfect for setting intentions."
+2025-05-23 19:30:00,"Had a fight with a friend. Feeling upset and angry.",Negative,anger,"Try to find one small good thing from today, even if it was difficult."
+2025-05-24 12:10:00,"Went for a walk and cleared my mind. Feeling calm and relaxed now.",Positive,calm,"Your positive mindset is your strength. Keep it going!"

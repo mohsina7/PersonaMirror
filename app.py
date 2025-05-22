@@ -92,15 +92,20 @@ def detect_emotion(text):
     return "neutral"
 
 def load_entries():
-    if os.path.exists(DATA_PATH):
-        df = pd.read_csv(DATA_PATH)
-        if "Timestamp" in df.columns:
-            df["Timestamp"] = pd.to_datetime(df["Timestamp"], errors="coerce")
+    try:
+        if os.path.exists(DATA_PATH):
+            df = pd.read_csv(DATA_PATH)
+            if "Timestamp" in df.columns:
+                df["Timestamp"] = pd.to_datetime(df["Timestamp"], errors="coerce")
+            else:
+                df["Timestamp"] = pd.NaT
+            return df
         else:
-            df["Timestamp"] = pd.NaT
-        return df
-    else:
-        return pd.DataFrame(columns=["Timestamp", "Entry", "Mood", "Emotion"])
+            return pd.DataFrame(columns=["Timestamp", "Entry", "Mood", "Emotion", "Reflection"])
+    except Exception as e:
+        st.error(f"❌ Failed to load journal entries: {e}")
+        return pd.DataFrame(columns=["Timestamp", "Entry", "Mood", "Emotion", "Reflection"])
+
 
 def save_entries(df):
     df = df.dropna(subset=["Timestamp"]).copy()
