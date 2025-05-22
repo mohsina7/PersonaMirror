@@ -1,5 +1,5 @@
-
 import pandas as pd
+import csv
 from datetime import datetime
 
 # Sample journal entries for demo
@@ -43,5 +43,5 @@ data = {
 
 df = pd.DataFrame(data)
 csv_path = "/mnt/data/journal_entries.csv"
-df.to_csv(csv_path, index=False)
+df.to_csv(csv_path, index=False, quoting=csv.QUOTE_ALL)
 csv_path
